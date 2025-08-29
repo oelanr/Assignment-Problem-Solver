@@ -33,7 +33,8 @@ while 1:
     print(f"Start:A:{A} | A_prime:{A_prime}\n")
     
     if l_base == []:
-        l_base = get_list_base(mat)
+        l_base = get_list_base(mat) # s'execute une fois seulement sinon l_base sera toujours mis à jour à chaque itération
+        
     A.append(A_prime.pop(A_prime.index(step_one(l_base))))
     print(f"Step1:liste_base:{l_base} | A:{A} | A_prime:{A_prime}\n")
 
@@ -48,7 +49,7 @@ while 1:
     print(f"Souligner par des tirets l'élément {d} de colonne {i_d+1} de ligne {r+1}")
     
     if i_d in l_base:
-        
+        #vérifier si il n'y a pas d'autre base
         print(f"la colonne {i_d+1} contient d'autre base. A:{A} | A_prime:{A_prime} .REVENIR A L'ETAPE 2\n")
         j = 0
         while i_d in l_base and j<2:
