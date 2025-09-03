@@ -1,4 +1,4 @@
-from algo import resoudre_probleme_affectation
+from algo import macks_bradford
 from utils.matrice import show
 
 # La matrice peut être chargée d'un fichier ou définie ici
@@ -12,7 +12,7 @@ mat = [
 ]
 
 # Appel simple à la fonction principale
-cout, affectation = resoudre_probleme_affectation(mat)
+cout, affectation = macks_bradford(mat)
 
 # Affichage propre des résultats
 print("*********************** Résultat **************************")
