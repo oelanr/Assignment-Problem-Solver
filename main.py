@@ -1,4 +1,4 @@
-from algo import macks_bradford
+from clean import macks_bradford
 from utils.matrice import show
 
 # La matrice peut être chargée d'un fichier ou définie ici
@@ -15,8 +15,6 @@ mat = [
 cout, affectation = macks_bradford(mat)
 
 # Affichage propre des résultats
-print("*********************** Résultat **************************")
 print("Matrice initiale:")
 show(mat)
 print(f"Temps optimal : {cout}")
-print(f"Affectation (colonnes pour chaque ligne) : {affectation}")

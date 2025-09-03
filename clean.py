@@ -19,54 +19,29 @@ def macks_bradford(matrice_initiale):
             list_base = get_list_base(mat)
             
         A.append(A_prime.pop(A_prime.index(step_one(list_base))))
-
-        print(f"Step1: liste_base:{list_base} | A:{A} | A_prime:{A_prime}\n")
-
         min_val,r = step_two(mat,A,A_prime,list_base)
-        print(f"Step2: minimum:{min_val} | r: ligne {r+1}\n")
-        show(mat)
-
         mat = step_three(mat,A,min_val)
-        print(f"Step3:Augmenter de {min_val} tous les éléments de A={A}\n")
-        show(mat)
         
         i_d,d = step_four(mat,A,r)
-        print(f"Souligner par des tirets l'élément {d} de colonne {i_d+1} de ligne {r+1}")
-        
-        
         # Step 5
         if i_d in list_base:
-            print(f"la colonne {i_d+1} contient d'autres bases. A:{A} | A_prime:{A_prime} .Retour à l'étape 2\n")
             j = 0
             while i_d in list_base and j<2:
                 A.append(i_d)
                 A_prime.remove(i_d)
-                print(f"INFO:liste_base:{list_base} | A:{A} | A_prime:{A_prime}\n")
                 min_val,r = step_two(mat,A,A_prime,list_base)
-                print(f"Step2:minimum:{min_val} | r:ligne {r+1}\n")
-                show(mat)
 
                 mat = step_three(mat,A,min_val)
-                print(f"Step3:Augmenter de {min_val} tous les éléments de A={A}\n")
 
                 i_d,d = step_four(mat,A,r)
-                print(f"Souligner par des tirets l'élément {d} de colonne {i_d+1} de ligne {r+1}")
                 if i_d in list_base:
                     pass
-                    print(f"La colonne {i_d+1} contient d'autres bases\n")
                 j+=1
-        else:
-                print(f"la colonne {i_d+1} ne contient pas d'autres bases\n")
 
         
         list_base = step_six_seven(list_base,i_d,r)
-        print(f"Etat de la base:{list_base}")
         
-        print(f"***************************itération {t}*******************************************")
         t += 1
-
-    if t > max_iter:
-        print("Limite d'itérations atteinte, algo pas terminé correctement.")
 
     cout_optimal = calcul(mat_copy,list_base)
     
@@ -100,7 +75,6 @@ def step_two(mat,A,A_prime,b):
     #calcul de différence entre a et b
     r = [a_i - b_i  if a_i != None and b_i != None else float('inf') for a_i,b_i in zip(a,b)]
     
-    print(f"a:{a} | b:{b}\n")
     min_val = min(r)
     return min_val,r.index(min_val)
 
